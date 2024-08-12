@@ -1,0 +1,7 @@
+#!/bin/sh
+
+apt-get install libncurses-dev
+cp pingpong.txt /opt
+g++ PingPongMain.cpp IntroductionRoom.cpp PlayRoom.cpp -o pingpong -lncurses
+cp pingpong /usr/bin
+rm pingpong

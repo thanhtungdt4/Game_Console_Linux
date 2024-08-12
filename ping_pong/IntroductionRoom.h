@@ -17,7 +17,7 @@
 #define HARD              2
 #define ROOM_INTRO_WIDTH  112
 #define ROOM_INTRO_HEIGHT 26
-#define FILE_NAME         "/home/tungnt/game_console/ping_pong/pingpong.txt"
+#define FILE_NAME         "/opt/pingpong.txt"
 
 class IntroductionRoom {
 public:
