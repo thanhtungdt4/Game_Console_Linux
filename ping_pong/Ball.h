@@ -58,6 +58,7 @@ public:
     void setmoveSpeed(int speed) { _moveSpeed = speed; }
     int get_x() const { return _x; }
     int get_y() const { return _y; }
+    int get_dir_x() const { return _dir_x; };
     int getmoveSpeed() const { return _moveSpeed; };
 
 private:

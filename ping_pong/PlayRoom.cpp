@@ -42,37 +42,37 @@ void PlayRoom::collisionsHandler() {
     /* Check for paddle collisions */
         if (_ball.get_y() == _player.get_y()) {
                 if (_ball.get_x() == _player.get_x() + 1) {
-                    _ball.set_x(_player.get_x());
+                    _ball.set_x(_player.get_x() + 1 - (_ball.get_dir_x() < 0 ? 0 : 1));
                     _ball.set_y(_player.get_y() - 1);
                     _ball.bounce();
                     setBallSpeed();
                 }
                 if (_ball.get_x() == _player.get_x() + 2) {
-                    _ball.set_x(_player.get_x() + 1);
+                    _ball.set_x(_player.get_x() + 2 - (_ball.get_dir_x() < 0 ? 0 : 1));
                     _ball.set_y(_player.get_y() - 1);
                     _ball.bounce();
                     setBallSpeed();
                 }
                 if (_ball.get_x() == _player.get_x() + 3) {
-                    _ball.set_x(_player.get_x() + 2);
+                    _ball.set_x(_player.get_x() + 3 - (_ball.get_dir_x() < 0 ? 0 : 1));
                     _ball.set_y(_player.get_y() - 1);
                     _ball.bounce();
                     setBallSpeed();
                 }
                 if (_ball.get_x() == _player.get_x() + 4) {
-                    _ball.set_x(_player.get_x() + 3);
+                    _ball.set_x(_player.get_x() + 4 - (_ball.get_dir_x() < 0 ? 0 : 1));
                     _ball.set_y(_player.get_y() - 1);
                     _ball.bounce();
                     setBallSpeed();
                 }
                 if (_ball.get_x() == _player.get_x() + 5) {
-                    _ball.set_x(_player.get_x() + 4);
+                    _ball.set_x(_player.get_x() + 5 - (_ball.get_dir_x() < 0 ? 0 : 1));
                     _ball.set_y(_player.get_y() - 1);
                     _ball.bounce();
                     setBallSpeed();
                 }
                 if (_ball.get_x() == _player.get_x() + 6) {
-                    _ball.set_x(_player.get_x() + 5);
+                    _ball.set_x(_player.get_x() + 6 - (_ball.get_dir_x() < 0 ? 0 : 1));
                     _ball.set_y(_player.get_y() - 1);
                     _ball.bounce();
                     setBallSpeed();
