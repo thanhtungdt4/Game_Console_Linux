@@ -174,14 +174,14 @@ start:
         if (_introRoom.levelSelected == EASY) {
             int b = rand() % 4;
             _computer.draw(_yellow);
-            if (_ball.get_x() > b - 1 && _ball.get_x() < _roomWidth - b - 5) {
+            if (_ball.get_x() > b && _ball.get_x() < _roomWidth - b - 5) {
                 _computer.moveAuto(_ball.get_x() - 1 + b);
             }
         }
         else {
             int b = rand() % 3;
             _computer.draw(_green);
-            if (_ball.get_x() > b - 1 && _ball.get_x() < _roomWidth - b - 5) {
+            if (_ball.get_x() > b && _ball.get_x() < _roomWidth - b - 5) {
                 _computer.moveAuto(_ball.get_x() - 1 + b);
             }
         }

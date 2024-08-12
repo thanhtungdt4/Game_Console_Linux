@@ -27,6 +27,8 @@ public:
                 _dir_y = -_dir_y;
             }
             if (_x <= 1 || _x >= ROOM_WIDTH - 2) {
+                if (_x <= 1)
+                    _x = 1;
                 _dir_x = -_dir_x;
             }
         }
