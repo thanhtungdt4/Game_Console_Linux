@@ -179,7 +179,7 @@ start:
             }
         }
         else {
-            int b = rand() % 3;
+            int b = rand() % 2;
             _computer.draw(_green);
             if (_ball.get_x() > b && _ball.get_x() < _roomWidth - b - 5) {
                 _computer.moveAuto(_ball.get_x() - 1 + b);
