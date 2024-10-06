@@ -1,0 +1,7 @@
+#!/bin/sh
+
+apt-get install libncurses-dev
+cp BrickBall.txt room.txt /opt
+g++ PlayRoom.cpp IntroductionRoom.cpp BrickBallMain.cpp -o BrickBall -lncurses
+cp BrickBall /usr/bin
+rm BrickBall
