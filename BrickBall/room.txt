@@ -86,10 +86,10 @@ START 3
 zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
 H                                                 H
 H                                                 H
+H        1   1   1   1   1   1   1   1   1        H
 H                                                 H
+H        1   1   1               1   1   1        H
 H                                                 H
-H                                                 H
-H                       1                         H
 H                                                 H
 H                                                 H
 H                                                 H
@@ -128,10 +128,10 @@ START 4
 zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
 H                                                 H
 H                                                 H
+H        1   1   1   1   1   1   1   1   1        H
 H                                                 H
-H                                                 H
-H                                                 H
-H                       1                         H
+H        1   1   1               1   1   1        H
+H                        2                        H
 H                                                 H
 H                                                 H
 H                                                 H
@@ -170,11 +170,11 @@ START 5
 zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
 H                                                 H
 H                                                 H
+H        1   1   1   2   2   2   1   1   1        H
 H                                                 H
+H        1   1   1               1   1   1        H
+H                        2                        H
 H                                                 H
-H                                                 H
-H                                                 H
-H                       1                         H
 H                                                 H
 H                                                 H
 H                                                 H
