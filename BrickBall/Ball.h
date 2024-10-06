@@ -84,7 +84,7 @@ private:
     int _x, _y;
     int _dir_x, _dir_y;
     int _timeCount { 0 };
-    int _moveSpeed { 3 };
+    int _moveSpeed { 4 };
 };
 
 #endif /* _BALL_H_ */

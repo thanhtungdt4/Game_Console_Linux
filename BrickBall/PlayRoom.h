@@ -37,6 +37,8 @@ private:
     int _roomNumber     { 0 };
     int _totalRoom      { 0 };
     int _pColisionCount { 0 };
+    int _randomSpeed    { 4 };
+    int _stepSpeed      { 3 };
 
     /* handler collisions between Ball and Paddle */
     void collisionsHandler();

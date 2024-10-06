@@ -35,7 +35,7 @@ PlayRoom::PlayRoom()
 
 void PlayRoom::setBallSpeed()
 {
-    _ball.setmoveSpeed(std::rand() % 3 + 3);
+    _ball.setmoveSpeed(std::rand() % _randomSpeed + _stepSpeed);
 }
 
 bool PlayRoom::isBrickAtXY(int x, int y)
@@ -385,6 +385,8 @@ start:
     _darkPurple.StringColor();
     _lightGreen.StringColor();
     _playerHeart = 3;
+    _randomSpeed = 4;
+    _stepSpeed = 3;
     _playerPoint = 0;
     _pColisionCount = 0;
 
@@ -396,6 +398,16 @@ nextRoom:
     _ball.setCoordinate(_player.get_x() + 3, _player.get_y() - 1);
     _ball.setDirXY();
     time = 0;
+
+    if (_roomNumber > 5 && _roomNumber <= 10) {
+        _randomSpeed = 3;
+    } else if (_roomNumber > 10 && _roomNumber <= 15) {
+        _randomSpeed = 2;
+    } else if (_roomNumber > 15 && _roomNumber <= 25) {
+        _stepSpeed = 2;
+    } else if (_roomNumber > 25) {
+        _stepSpeed = 1;
+    }
 
     while ((ch = getch()) != 'q') {
         clear();
@@ -443,7 +455,7 @@ nextRoom:
             _playerHeart--;
             _ball.is_move = false;
             _ball.setDirXY();
-            _ball.setmoveSpeed(2);
+            _ball.setmoveSpeed(3);
         }
 
         if (_playerHeart == 0) {
