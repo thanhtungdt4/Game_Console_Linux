@@ -20,7 +20,7 @@
 #include "Brick.h"
 #include "Paddle.h"
 
-#define ROOM_FILE "room.txt"
+#define ROOM_FILE "/opt/room.txt"
 
 class PlayRoom {
 public:

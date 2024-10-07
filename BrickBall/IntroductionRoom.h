@@ -17,7 +17,7 @@
 #define FIXED_MAP         2
 #define ROOM_INTRO_WIDTH  100
 #define ROOM_INTRO_HEIGHT 26
-#define FILE_NAME         "BrickBall.txt"
+#define FILE_NAME         "/opt/BrickBall.txt"
 
 class IntroductionRoom {
 public:
