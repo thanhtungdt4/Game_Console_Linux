@@ -28,6 +28,7 @@ public:
     ~PlayRoom() { endwin(); }
 
     void setRoomNumber(int roomNumber) { _roomNumber = roomNumber; }
+    int getTotalRoom() const { return _totalRoom; };
     void run();
 private:
     int _roomWidth      { ROOM_WIDTH };
@@ -50,6 +51,8 @@ private:
     bool isLeftBrickEmpty(int brick_x, int brick_y);
     bool isAllBrickDestroyed();
 
+    /* Parse total Room from room.txt file */
+    int parseTotalRoom(const std::string& filename);
     void parseRoomFile(const std::string& filename);
 
     IntroductionRoom _introRoom;

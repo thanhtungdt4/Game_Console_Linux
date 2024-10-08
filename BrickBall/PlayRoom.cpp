@@ -26,6 +26,12 @@ PlayRoom::PlayRoom()
     timeout(0);
     std::srand(static_cast<unsigned int>(std::time(0)));
 
+    
+    if (parseTotalRoom(ROOM_FILE)) {
+        endwin();
+        throw std::invalid_argument("Read room.txt failed");
+    }
+
     if (has_colors() == FALSE) {
         endwin();
         throw std::invalid_argument("Your terminal does not support color");
@@ -75,6 +81,26 @@ bool PlayRoom::isAllBrickDestroyed()
     return false;
 }
 
+int PlayRoom::parseTotalRoom(const std::string& filename)
+{
+    std::ifstream file(filename);
+    if (!file.is_open()) {
+        std::cerr << "Error opening file: " << filename << std::endl;
+        return -1;
+    }
+
+    std::string line;
+    while (std::getline(file, line)) {
+        if (line.find("START") != std::string::npos) {
+            _totalRoom++;
+        }
+    }
+
+    file.close();
+
+    return 0;
+}
+
 void PlayRoom::parseRoomFile(const std::string& filename)
 {
     std::ifstream file(filename);
@@ -92,16 +118,6 @@ void PlayRoom::parseRoomFile(const std::string& filename)
 
     /* Clear bricks vector */
     bricks.clear();
-    _totalRoom = 0;
-
-    while (std::getline(file, line)) {
-        if (line.find("START") != std::string::npos) {
-            _totalRoom++;
-        }
-    }
-
-    file.clear();
-    file.seekg(0, std::ios::beg);
 
     while (std::getline(file, line)) {
         if (line.substr(0, 5) == "START") {
@@ -462,7 +478,7 @@ nextRoom:
             time++;
             _ball.stop();
             _darkPurple.ColorOn();
-            mvprintw((_roomHeight / 2) + 3, _roomWidth + 5, "***GAME OVER***");
+            mvprintw((_roomHeight / 2) + 5, _roomWidth + 5, "***GAME OVER***");
             _darkPurple.ColorOff();
             if (time == 200) {
                 clear();
