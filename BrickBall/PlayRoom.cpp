@@ -26,7 +26,9 @@ PlayRoom::PlayRoom()
     timeout(0);
     std::srand(static_cast<unsigned int>(std::time(0)));
 
-    
+    /* get initial high score */
+    getHighScore();
+
     if (parseTotalRoom(ROOM_FILE)) {
         endwin();
         throw std::invalid_argument("Read room.txt failed");
@@ -37,6 +39,33 @@ PlayRoom::PlayRoom()
         throw std::invalid_argument("Your terminal does not support color");
     }
     start_color();
+}
+
+void PlayRoom::getHighScore()
+{
+    const char* homeDir = getenv("HOME");
+    std::string filePath = std::string(homeDir) + HIGHSCORE_FILE;
+    std::ifstream file(filePath);
+
+    if (!file.is_open()) {
+        _initalhighScore = 0;
+        file.close();
+    } else {
+        file >> _initalhighScore;
+        file.close();
+    }
+}
+
+void PlayRoom::saveHighScore(const int &playerPoint)
+{
+    const char* homeDir = getenv("HOME");
+    std::string filePath = std::string(homeDir) + HIGHSCORE_FILE;
+    std::ofstream file(filePath, std::ios::out);
+
+    if (file.is_open()) {
+        file << playerPoint;
+        file.close();
+    }
 }
 
 void PlayRoom::setBallSpeed()
@@ -437,9 +466,10 @@ nextRoom:
         mvprintw(1, _roomWidth + 5, "Heart S2: %d", _playerHeart);
         _pink.ColorOff();
         _lightGreen.ColorOn();
-        mvprintw(3, _roomWidth + 5, "Point: %d", _playerPoint);
+        mvprintw(3, _roomWidth + 5, "Player Score: %d", _playerPoint);
         mvprintw(5, _roomWidth + 5, "Room Number: %d", _roomNumber);
         mvprintw(7, _roomWidth + 5, "Total Room: %d", _totalRoom);
+        mvprintw(9, _roomWidth + 5, "High Score: %d", _initalhighScore);
         _lightGreen.ColorOff();
 
         mvprintw((_roomHeight / 2) - 1, _roomWidth + 5, "dir X: %d", _ball.get_dir_x());
@@ -519,4 +549,8 @@ nextRoom:
     }
 
     endwin();
+
+    if (_playerPoint > _initalhighScore) {
+        saveHighScore(_playerPoint);
+    }
 }

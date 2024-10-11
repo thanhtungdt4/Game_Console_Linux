@@ -20,7 +20,8 @@
 #include "Brick.h"
 #include "Paddle.h"
 
-#define ROOM_FILE "/opt/room.txt"
+#define ROOM_FILE        "/opt/room.txt"
+#define HIGHSCORE_FILE   "/.highscore.txt"
 
 class PlayRoom {
 public:
@@ -31,15 +32,16 @@ public:
     int getTotalRoom() const { return _totalRoom; };
     void run();
 private:
-    int _roomWidth      { ROOM_WIDTH };
-    int _roomHeight     { ROOM_HEIGHT };
-    int _playerPoint    { 0 };
-    int _playerHeart    { 3 };
-    int _roomNumber     { 0 };
-    int _totalRoom      { 0 };
-    int _pColisionCount { 0 };
-    int _randomSpeed    { 4 };
-    int _stepSpeed      { 3 };
+    int _roomWidth         { ROOM_WIDTH };
+    int _roomHeight        { ROOM_HEIGHT };
+    int _playerPoint       { 0 };
+    int _playerHeart       { 3 };
+    int _roomNumber        { 0 };
+    int _totalRoom         { 0 };
+    int _pColisionCount    { 0 };
+    int _randomSpeed       { 4 };
+    int _stepSpeed         { 3 };
+    int _initalhighScore   { 0 };
 
     /* handler collisions between Ball and Paddle */
     void collisionsHandler();
@@ -54,6 +56,8 @@ private:
     /* Parse total Room from room.txt file */
     int parseTotalRoom(const std::string& filename);
     void parseRoomFile(const std::string& filename);
+    void getHighScore();
+    void saveHighScore(const int &playerPoint);
 
     IntroductionRoom _introRoom;
     std::vector<Brick> bricks;
