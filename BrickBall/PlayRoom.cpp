@@ -324,6 +324,9 @@ void PlayRoom::collisionsHandler() {
             setBallSpeed();
             _pColisionCount++;
             if (_pColisionCount >= 10) {
+                if (_playerPoint >= 2) {
+                    _playerPoint -= 2;
+                }
                 _ball.setCoordinate(_player.get_x() + 3, _player.get_y() - 1);
                 _ball.is_move = false;
                 _ball.setDirXY();
@@ -337,6 +340,9 @@ void PlayRoom::collisionsHandler() {
             setBallSpeed();
             _pColisionCount++;
             if (_pColisionCount >= 10) {
+                if (_playerPoint >= 2) {
+                    _playerPoint -= 2;
+                }
                 _ball.setCoordinate(_player.get_x() + 3, _player.get_y() - 1);
                 _ball.is_move = false;
                 _ball.setDirXY();
@@ -350,6 +356,9 @@ void PlayRoom::collisionsHandler() {
             setBallSpeed();
             _pColisionCount++;
             if (_pColisionCount >= 5) {
+                if (_playerPoint >= 1) {
+                    _playerPoint--;
+                }
                 _ball.setCoordinate(_player.get_x() + 3, _player.get_y() - 1);
                 _ball.is_move = false;
             }
@@ -362,6 +371,9 @@ void PlayRoom::collisionsHandler() {
             setBallSpeed();
             _pColisionCount++;
             if (_pColisionCount >= 10) {
+                if (_playerPoint >= 2) {
+                    _playerPoint -= 2;
+                }
                 _ball.setCoordinate(_player.get_x() + 3, _player.get_y() - 1);
                 _ball.is_move = false;
                 _ball.setDirXY();
@@ -375,6 +387,9 @@ void PlayRoom::collisionsHandler() {
             setBallSpeed();
             _pColisionCount++;
             if (_pColisionCount >= 10) {
+                if (_playerPoint >= 2) {
+                    _playerPoint -= 2;
+                }
                 _ball.setCoordinate(_player.get_x() + 3, _player.get_y() - 1);
                 _ball.is_move = false;
                 _ball.setDirXY();
