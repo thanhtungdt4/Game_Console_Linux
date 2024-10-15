@@ -13,7 +13,7 @@ public:
     Brick(int startX, int startY, int type) : x(startX), y(startY), brickType(type), isDestroyed(false) {}
 
     void draw(ColorHandle& yellow, ColorHandle& magenta, ColorHandle& cyan,
-            ColorHandle& green, ColorHandle& gray) {
+            ColorHandle& green, ColorHandle& gray, ColorHandle& pink) {
         if (!isDestroyed) {
             if (brickType == 1) {
                 green.ColorOn();
@@ -35,6 +35,10 @@ public:
                 gray.ColorOn();
                 mvprintw(y, x, "###");
                 gray.ColorOff();
+            } else if (brickType == 6) {
+                pink.ColorOn();
+                mvprintw(y, x, "*");
+                pink.ColorOff();
             }
         }
     }
@@ -47,6 +51,8 @@ public:
 
     int get_x() const { return x; }
     int get_y() const { return y; }
+    int getBrickType() const { return brickType; };
+    void setBrickType(int type) { brickType = type; };
 
     bool isDestroyed;
 private:

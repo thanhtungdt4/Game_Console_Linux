@@ -165,7 +165,7 @@ void PlayRoom::parseRoomFile(const std::string& filename)
 
             for (int x = 0; x < line.size(); x++) {
                 char ch = line[x];
-                if (ch == '1' || ch == '2' || ch == '3' || ch == '4' || ch == '5') {
+                if (ch == '1' || ch == '2' || ch == '3' || ch == '4' || ch == '5' || ch == '6') {
                     int brickType = ch - '0';
                     bricks.emplace_back(x, y, brickType);
                 }
@@ -400,12 +400,21 @@ void PlayRoom::collisionsHandler() {
     /* Check collisions with bricks */
     for (auto &brick : bricks) {
         if (!brick.isDestroyed) {
-            if (brick.get_x() <= _ball.get_x() && _ball.get_x() <= brick.get_x() + 2 &&
-                    _ball.get_y() == brick.get_y()) {
-                pointCollisionHandle(_ball.get_x(), brick.get_y(), brick.get_x(), brick.get_y());
-                brick.destroy();
-                _playerPoint++;
-                _pColisionCount = 0; /* reset _pColisionCount */
+            if (brick.getBrickType() == 6) {
+                if (brick.get_x() == _ball.get_x() && _ball.get_y() == brick.get_y()) {
+                    _playerHeart++;
+                    pointCollisionHandle(_ball.get_x(), brick.get_y(), brick.get_x(), brick.get_y());
+                    brick.setBrickType(1);
+                    brick.destroy();
+                }
+            } else {
+                if (brick.get_x() <= _ball.get_x() && _ball.get_x() <= brick.get_x() + 2 &&
+                        _ball.get_y() == brick.get_y()) {
+                    pointCollisionHandle(_ball.get_x(), brick.get_y(), brick.get_x(), brick.get_y());
+                    brick.destroy();
+                    _playerPoint++;
+                    _pColisionCount = 0; /* reset _pColisionCount */
+                }
             }
         }
     }
@@ -474,7 +483,7 @@ nextRoom:
         drawRoom();
 
         for (auto& brick : bricks) {
-            brick.draw(_yellow, _magenta, _cyan, _green, _gray);
+            brick.draw(_yellow, _magenta, _cyan, _green, _gray, _pink);
         }
 
         _pink.ColorOn();
